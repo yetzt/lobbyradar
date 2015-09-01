@@ -74,7 +74,7 @@ EntityDisplay.displayEntityRelations = function (entity) {
 		activities: {id: 'activities', name: 'Arbeitgeberschaft', list: [], format: EntityDisplay.displayGeneric},
 		otherassociations: {id: 'otherassociations', name: 'Verbindungen', list: [], format: EntityDisplay.displayGeneric},
 		everythingelse: {id: 'everythingelse', name: 'Verbindungen', list: [], format: EntityDisplay.displayGeneric},
-		nebentaetigkeiten: {id: 'nebentaetigkeiten', name: 'Nebeneinkünfte', list: [], format: EntityDisplay.displayAddIncomes},
+		nebentaetigkeiten: {id: 'nebentaetigkeiten', name: 'Nebentätigkeiten', list: [], format: EntityDisplay.displayAddIncomes},
 		donations: {id: 'donations', name: 'Parteispenden', list: [], format: EntityDisplay.displayDonations},
 		committees: {id: 'committees', name: 'Ausschüsse', list: [], format: EntityDisplay.displayCommittees},
 		links: {id: 'links', name: 'Links', list: [], format: EntityDisplay.displayEntityLinks},
