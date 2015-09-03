@@ -149,7 +149,7 @@ function saveTiles(maxDepth) {
 						nodes.filter(function (n) { return (n.type == 'person') && !n.mdb }).map(circle).join('\n'),
 					'pop graphic-context',
 					'push graphic-context',
-						'fill "#fa7d18"',
+						'fill "#fcb52b"',
 						nodes.filter(function (n) { return (n.type == 'person') && n.mdb }).map(circle).join('\n'),
 					'pop graphic-context',
 				'pop graphic-context'

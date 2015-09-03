@@ -35,8 +35,13 @@ var NetworkViz = (function () {
 			node.lng =  node.x;
 			node.lat = -node.y;
 
-			//node.color = (node.type == 'person') ? '#fa7d18' : '#a3db19';
-			node.color = (node.type == 'person') ? '#fee915' : '#a3db19';
+			if(node.type == 'person'){
+				node.color = '#fa7d18';
+			}else if(node.mdb){
+				node.color = '#fcb52b';
+			}else{
+				node.color = '#a3db19';
+			}
 
 			node.neighbours = [];
 			nodeLookup[node.id] = node;
