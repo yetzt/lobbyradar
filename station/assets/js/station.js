@@ -672,16 +672,6 @@ app.controller('AppCtrl', function ($rootScope, $scope, dateFilter, auth) {
 				},
 				types: [{id: 'executive', name: 'Vorstand'}, {id: 'member', name: 'Mitglied'}, {id: 'job', name: 'Arbeitsverhältnis'}, {id: 'government', name: 'Politische Position'}, {id: 'pass', name: 'Ausweis'}, {id: 'business', name: 'Geschäftsverbindung'}, {id: 'subsidiary', name: 'Tochterunternehmen/-gliederung'}, {id: 'sponsoring', name: 'Sponsor'}, {id: 'committee', name: 'Ausschuss'}, {id: 'participant', name: 'Teilnehmer'}]
 			},
-			donation: {
-				"name": "Spende",
-				defaults: {
-					sources: [],
-					verified: true
-				},
-				asString: function (v) {
-					return ((v.value.year !== null ? v.value.year + ':' : '') + ' ' + (v.value.amount !== null ? v.value.amount : '')).trim();
-				}
-			},
 			activity: {
 				"name": "Nebeneinkünfte",
 				defaults: {
@@ -696,6 +686,17 @@ app.controller('AppCtrl', function ($rootScope, $scope, dateFilter, auth) {
 					if (v.value.place) sl.push(v.value.place);
 					if (v.value.activity) sl.push(v.value.activity);
 					return sl.join('; ');
+				},
+				types: [{id: 'executive', name: 'Vorstand'}, {id: 'member', name: 'Mitglied'}, {id: 'job', name: 'Arbeitsverhältnis'}, {id: 'government', name: 'Politische Position'}, {id: 'pass', name: 'Ausweis'}, {id: 'business', name: 'Geschäftsverbindung'}, {id: 'subsidiary', name: 'Tochterunternehmen/-gliederung'}, {id: 'sponsoring', name: 'Sponsor'}, {id: 'committee', name: 'Ausschuss'}, {id: 'participant', name: 'Teilnehmer'}]
+			},
+			donation: {
+				"name": "Spende",
+				defaults: {
+					sources: [],
+					verified: true
+				},
+				asString: function (v) {
+					return ((v.value.year !== null ? v.value.year + ':' : '') + ' ' + (v.value.amount !== null ? v.value.amount : '')).trim();
 				}
 			}
 		},
