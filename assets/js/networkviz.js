@@ -35,13 +35,12 @@ var NetworkViz = (function () {
 			node.lng = node.x;
 			node.lat = -node.y;
 
-			if (node.type == 'person') {
+			if(node.type == 'person'){
 				node.color = '#fa7d18';
-			} else {
+			}else if(node.mdb){
+				node.color = '#fcb52b';
+			}else{
 				node.color = '#a3db19';
-			}
-			if (node.mdb) {
-				node.color = '#21d6fe';
 			}
 
 			node.neighbours = [];
@@ -193,6 +192,7 @@ var NetworkViz = (function () {
 	}
 
 	function activateNode(node) {
+		console.log(node);
 		node.active = true;
 		activeNodes.push(node);
 		showLabel(node);
@@ -220,7 +220,7 @@ var NetworkViz = (function () {
 		highlightLayer.addLayer(
 			L.bubble(
 				center, node.r,
-				{stroke: false, fill: true, fillColor: highlightColor, highlight: true, fillOpacity: 1.0}
+				{stroke: false, fill: true, fillColor: node.color, highlight: true, fillOpacity: 1.0}
 			)
 		)
 
@@ -245,7 +245,7 @@ var NetworkViz = (function () {
 		highlightLayer.addLayer(
 			L.bubble(
 				center, node.r,
-				{stroke: false, fill: true, fillColor: node.color, fillOpacity: 1.0}
+				{stroke: false, fill: true, fillColor: highlightColor, fillOpacity: 1.0}
 			)
 		)
 
@@ -381,6 +381,7 @@ var NetworkViz = (function () {
 
 	return {
 		highlightEntity: function (id) {
+			console.log(id);
 			lookupId(id, highlightNode)
 		},
 		panToEntity: function (id) {
