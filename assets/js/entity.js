@@ -254,8 +254,8 @@ EntityDisplay.displayHeaderEntity = function (entity) {
 	entity.tags.forEach(function (tag) {
 		if (tag == 'mdb') {
 			result += '<p>Mitglied des Bundestages</p>';
-		} else if (tag == 'lobbyist') {
-			result += '<p>LobbyistIn / InteressensvertreterIn</p>'
+		//} else if (tag == 'lobbyist') {
+		//	result += '<p>LobbyistIn / InteressensvertreterIn</p>'
 		} else if (tag == 'anwaltskanzlei') {
 			result += '<p>Anwaltskanzlei</p>'
 		} else if (tag == 'committee') {
