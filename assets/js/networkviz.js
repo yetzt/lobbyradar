@@ -30,17 +30,17 @@ var NetworkViz = (function () {
 			keys.forEach(function (key) {
 				node[key] = nodes[key][i];
 			})
-			node.x += f/2;
-			node.y += f/2;
-			node.lng =  node.x;
+			node.x += f / 2;
+			node.y += f / 2;
+			node.lng = node.x;
 			node.lat = -node.y;
 
-			if(node.type != 'person'){
-				node.color = '#a3db19';
-			}else{
+			if (node.type == 'person') {
 				node.color = '#fa7d18';
+			} else {
+				node.color = '#a3db19';
 			}
-			if(node.mdb){
+			if (node.mdb) {
 				node.color = '#21d6fe';
 			}
 
@@ -58,37 +58,37 @@ var NetworkViz = (function () {
 
 		var projection = {
 			project: function (latlng) {
-				return L.point(latlng.lng/f, -latlng.lat/f);
+				return L.point(latlng.lng / f, -latlng.lat / f);
 			},
 			unproject: function (point) {
-				return L.latLng(-point.y*f, point.x*f);
+				return L.latLng(-point.y * f, point.x * f);
 			},
-			bounds: L.bounds(L.point(0,0), L.point(1,1))
+			bounds: L.bounds(L.point(0, 0), L.point(1, 1))
 		};
 
 		var crs = L.extend({}, L.CRS, {
 			projection: projection,
 			transformation: new L.Transformation(1, 0, 1, 0),
 			scale: function (zoom) {
-				return 256*Math.pow(2, zoom);
+				return 256 * Math.pow(2, zoom);
 			}
 		});
 
-		$('#networkviz').css({height:'100%'});
+		$('#networkviz').css({height: '100%'});
 
 		var margin = f;
 		map = L.map('networkviz', {
 			minZoom: 0,
 			maxZoom: 7,
 			zoom: 5,
-			center: [-0.5*f, 0.5*f],
-			maxBounds: L.latLngBounds([-f-margin, -margin],[margin, f+margin]),
+			center: [-0.5 * f, 0.5 * f],
+			maxBounds: L.latLngBounds([-f - margin, -margin], [margin, f + margin]),
 			crs: crs,
 			zoomAnimation: true,
 			zoomControl: false,
 			scrollWheelZoom: true
 		});
-		map.addControl( L.control.zoom({position: 'bottomleft'}) )
+		map.addControl(L.control.zoom({position: 'bottomleft'}))
 
 
 		map.on('mousemove', mousemove);
@@ -103,7 +103,7 @@ var NetworkViz = (function () {
 			attribution: '',
 			noWrap: true
 		})
-		
+
 		layer.addTo(map);
 
 
@@ -120,8 +120,8 @@ var NetworkViz = (function () {
 		if (hoveredNode !== node) {
 			if (hoveredNode && !hoveredNode.active) hideLabel(hoveredNode);
 			if (node && !node.active) showLabel(node);
-			
-			$('#networkviz').css( 'cursor', node ? 'pointer' : '-webkit-grab');
+
+			$('#networkviz').css('cursor', node ? 'pointer' : '-webkit-grab');
 
 			hoveredNode = node;
 		}
@@ -145,26 +145,27 @@ var NetworkViz = (function () {
 			if (d < bestDist) {
 				bestDist = d;
 				bestNode = node;
-			};
+			}
+			;
 		});
 
-		var border = Math.pow(0.5, map.getZoom()-10);
+		var border = Math.pow(0.5, map.getZoom() - 10);
 
 		if (bestDist < bestNode.r + border) return bestNode;
 		return false;
 	}
 
 	function panToNode(node) {
-		var zoom = Math.round(9 - Math.log(node.r)/Math.log(2));
+		var zoom = Math.round(9 - Math.log(node.r) / Math.log(2));
 
 		if (zoom < 3) zoom = 3;
 		if (zoom > 7) zoom = 7;
 
 		var latLng = L.latLng(node.lat, node.lng);
 		var centerPoint = map.getSize();
-		latLng.lng += centerPoint.x*Math.pow(0.5, zoom-5);
+		latLng.lng += centerPoint.x * Math.pow(0.5, zoom - 5);
 
-		map.setView(latLng, zoom, {animate:true})
+		map.setView(latLng, zoom, {animate: true})
 	}
 
 	function clearNodes() {
@@ -178,7 +179,7 @@ var NetworkViz = (function () {
 	function ensureLabel(node) {
 		if (node.label) return;
 		var latLng = L.latLng(node.lat - node.r, node.lng);
-		node.label = L.label(latLng, {text:node.name });
+		node.label = L.label(latLng, {text: node.name});
 		node.label.addTo(labelLayer);
 	}
 
@@ -202,7 +203,7 @@ var NetworkViz = (function () {
 			highlightLayer.addLayer(
 				L.line(
 					[center, L.latLng(neighbour.lat, neighbour.lng)],
-					{ stroke:true, fill:false, color:highlightColor, highlight:true, _weight:1 }
+					{stroke: true, fill: false, color: highlightColor, highlight: true, _weight: 1}
 				)
 			)
 		})
@@ -211,7 +212,7 @@ var NetworkViz = (function () {
 			highlightLayer.addLayer(
 				L.bubble(
 					L.latLng(neighbour.lat, neighbour.lng), neighbour.r,
-					{ stroke:false, fill:true, fillColor:highlightColor, highlight:true, fillOpacity:1.0 }
+					{stroke: false, fill: true, fillColor: highlightColor, highlight: true, fillOpacity: 1.0}
 				)
 			)
 		})
@@ -219,7 +220,7 @@ var NetworkViz = (function () {
 		highlightLayer.addLayer(
 			L.bubble(
 				center, node.r,
-				{ stroke:false, fill:true, fillColor:highlightColor, highlight:true, fillOpacity:1.0 }
+				{stroke: false, fill: true, fillColor: highlightColor, highlight: true, fillOpacity: 1.0}
 			)
 		)
 
@@ -227,7 +228,7 @@ var NetworkViz = (function () {
 			highlightLayer.addLayer(
 				L.line(
 					[center, L.latLng(neighbour.lat, neighbour.lng)],
-					{ stroke:true, fill:false, color:'rgb(20,59,82)', _weight:1 }
+					{stroke: true, fill: false, color: 'rgb(20,59,82)', _weight: 1}
 				)
 			)
 		})
@@ -236,7 +237,7 @@ var NetworkViz = (function () {
 			highlightLayer.addLayer(
 				L.bubble(
 					L.latLng(neighbour.lat, neighbour.lng), neighbour.r,
-					{ stroke:false, fill:true, fillColor:neighbour.color, fillOpacity:1.0 }
+					{stroke: false, fill: true, fillColor: neighbour.color, fillOpacity: 1.0}
 				)
 			)
 		})
@@ -244,7 +245,7 @@ var NetworkViz = (function () {
 		highlightLayer.addLayer(
 			L.bubble(
 				center, node.r,
-				{ stroke:false, fill:true, fillColor:node.color, fillOpacity:1.0 }
+				{stroke: false, fill: true, fillColor: node.color, fillOpacity: 1.0}
 			)
 		)
 
@@ -268,7 +269,7 @@ var NetworkViz = (function () {
 	}
 
 	function sqr(v) {
-		return v*v;
+		return v * v;
 	}
 
 	L.Label = L.Class.extend({
@@ -305,7 +306,7 @@ var NetworkViz = (function () {
 			if (this.label) {
 				var pos = this._map.latLngToLayerPoint(this._latlng).round();
 				this.label.css({
-					left:pos.x - this.label.outerWidth()/2,
+					left: pos.x - this.label.outerWidth() / 2,
 					top: pos.y + 10
 				});
 			}
@@ -352,7 +353,7 @@ var NetworkViz = (function () {
 			var map = this._map;
 
 			this._point = map.latLngToLayerPoint(this._latlng);
-			this._radius = this._mRadius * Math.pow(2, map.getZoom()-7);
+			this._radius = this._mRadius * Math.pow(2, map.getZoom() - 7);
 			if (this.options.highlight) this._radius += highlightBorder;
 			this._radiusY = false;
 
@@ -366,8 +367,8 @@ var NetworkViz = (function () {
 
 	L.Line = L.Polyline.extend({
 		_project: function () {
-			var weight = this.options._weight*Math.pow(2,this._map.getZoom()-6);
-			if (this.options.highlight) weight += 2*highlightBorder;
+			var weight = this.options._weight * Math.pow(2, this._map.getZoom() - 6);
+			if (this.options.highlight) weight += 2 * highlightBorder;
 			this.setStyle({weight: weight})
 
 			L.Polyline.prototype._project.call(this);
@@ -379,8 +380,12 @@ var NetworkViz = (function () {
 	};
 
 	return {
-		highlightEntity: function (id) { lookupId(id, highlightNode) },
-		panToEntity: function (id) { lookupId(id, panToNode) },
+		highlightEntity: function (id) {
+			lookupId(id, highlightNode)
+		},
+		panToEntity: function (id) {
+			lookupId(id, panToNode)
+		},
 		setClickHandler: setClickHandler
 	}
 })();
