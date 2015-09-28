@@ -44,14 +44,6 @@ function savePreview() {
 					.filter(function (n) { return n })
 					.join('\n'),
 			'pop graphic-context',
-			'push graphic-context',
-				'fill "#21d6fe"',
-				nodes
-					.filter(function (n) { return n.mdb })
-					.map(circle)
-					.filter(function (n) { return n })
-					.join('\n'),
-			'pop graphic-context',
 		'pop graphic-context'
 	].join('\n');
 
