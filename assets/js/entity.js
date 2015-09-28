@@ -62,7 +62,7 @@ EntityDisplay.displayEntity = function (entity) {
 };
 
 EntityDisplay.displayEntityRelations = function (entity) {
-	if (entity.relations.length == 0) return '';
+	if (entity.relations.length == 0 || entity.relations == null) return '';
 
 	var result = '';
 
