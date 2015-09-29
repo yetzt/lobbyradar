@@ -74,6 +74,7 @@ function savePositions() {
 			i: node.id,
 			n: node.name,
 			t: node.type,
+			m: node.mdb,
 			r: node.r,
 			x: node.x,
 			y: node.y

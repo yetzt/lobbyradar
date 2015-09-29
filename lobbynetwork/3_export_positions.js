@@ -16,6 +16,7 @@ function exportPositions() {
 			id: node.id,
 			name: node.name,
 			type: node.type,
+			mdb: node.mdb,
 			x: Math.round(node.x*4*data.config.scale),
 			y: Math.round(node.y*4*data.config.scale),
 			r: Math.round(node.r*4*data.config.scale)

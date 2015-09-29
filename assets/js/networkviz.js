@@ -35,7 +35,8 @@ var NetworkViz = (function () {
 			node.lng = node.x;
 			node.lat = -node.y;
 
-			if(node.type == 'person'){
+
+			if(node.type == 'person' && !node.mdb){
 				node.color = '#fa7d18';
 			}else if(node.mdb){
 				node.color = '#fcb52b';
@@ -245,7 +246,7 @@ var NetworkViz = (function () {
 		highlightLayer.addLayer(
 			L.bubble(
 				center, node.r,
-				{stroke: false, fill: true, fillColor: highlightColor, fillOpacity: 1.0}
+				{stroke: false, fill: true, fillColor: node.color, fillOpacity: 1.0}
 			)
 		)
 
@@ -381,7 +382,6 @@ var NetworkViz = (function () {
 
 	return {
 		highlightEntity: function (id) {
-			console.log(id);
 			lookupId(id, highlightNode)
 		},
 		panToEntity: function (id) {
