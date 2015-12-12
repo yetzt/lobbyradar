@@ -148,46 +148,19 @@ var nice_error = function (err) {
 };
 
 // index page
-app.all("/", function (req, res) {
+app.get("/", function (req, res) {
 	stats.views++;
-	res.render("index", {});
-});
-
-// FAQ Page (static)
-app.get("/oft-gestellte-fragen", function (req, res) {
-	stats.views++;
-	res.render("faq", {});
-});
-
-// FAQ Page (static)
-app.get("/artikel", function (req, res) {
-	stats.views++;
-	res.render("articles", {});
+   res.render("app", {});
+//	res.render("index", {});
 });
 
 // Abspann Page (static)
-app.get("/abspann", function (req, res) {
-	stats.views++;
-	res.render("abspann", {});
-});
-
-// Intro Page (static)
-app.get("/um-was-geht-es", function (req, res) {
-	stats.views++;
-	res.render("intro", {});
-});
-
-// Abspann Page (static)
+/*
 app.get("/download-plugin", function (req, res) {
 	stats.views++;
 	res.render("extension", {});
 });
-
-// Abspann Page (static)
-app.get("/ueber-uns", function (req, res) {
-	stats.views++;
-	res.render("about", {});
-});
+*/
 
 // Abspann Page (static)
 app.get("/verbindungssuche", function (req, res) {

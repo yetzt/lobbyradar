@@ -94,7 +94,7 @@ var NetworkViz = (function () {
 		map.on('mousemove', mousemove);
 		map.on('click', mouseclick);
 
-		var layer = L.tileLayer('https://www.lobbyradar.de/lobbynetwork/tiles/{z}/{y}/{x}.png', {
+		var layer = L.tileLayer('https://www.lobbyradar.org/lobbynetwork/tiles/{z}/{y}/{x}.png', {
 			minZoom: 0,
 			maxZoom: 7,
 			maxNativeZoom: 7,

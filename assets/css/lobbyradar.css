@@ -1938,9 +1938,8 @@ p.first-p {
 
 #networkviz-wrapper {
 	position: fixed;
-	width: 99%;
-	margin-right: 12px;
-	top: 46px;
+	right: 0px;
+	top: 0px;
 	left: 0;
 	bottom: 0px;
 	display: block;
@@ -2019,7 +2018,7 @@ p.first-p {
 
 @media (min-width: 768px) {
 	.viewport-visual {
-		margin-top: 145px;
+		margin-top: 25px;
 	}
 }
 
@@ -2113,7 +2112,7 @@ p.first-p {
 
 @media (min-width: 768px) {
 	.viewport-info {
-		margin-top: 145px;
+		margin-top: 25px;
 	}
 }
 
