@@ -52,8 +52,6 @@ EntityDisplay.displayEntity = function (entity) {
 
 	result += EntityDisplay.displayEntityRelations(entity);
 
-	result += EntityDisplay.displayReportEntity(entity);
-
 	result += EntityDisplay.displayFooterEntity(entity);
 
 	result += '</div>';
@@ -282,19 +280,6 @@ EntityDisplay.displayFooterEntity = function (entity) {
 		'<p class="meta">' +
 		'<span>Stand der Daten: ' + moment(entity.created).format("DD.MM.YYYY hh:mm") + '</span>' +
 		'</p>' +
-		'</div></div>';
-	return result;
-};
-
-EntityDisplay.displayReportEntity = function (entity) {
-	var result =
-		'<div class="row"><br/>' +
-		'<div class="col-sm-6">' +
-		'<a class="btn btn-block btn-default" href="mailto:lobbyradar@zdf.de?subject=Verbindung melden ' + entity.name +
-		' (' + entity._id + ')&body=Ich möchte eine Verbindung melden:" role="button">Verbindung melden</a>' +
-		'</div>' +
-		'<div class="col-sm-6">' + '<a class="btn btn-block btn-default" href="mailto:lobbyradar@zdf.de?subject=Fehler melden ' +
-		entity.name + ' (' + entity._id + ')&body=Ich möchte einen Fehler melden:" role="button">Fehler melden</a>' +
 		'</div></div>';
 	return result;
 };
