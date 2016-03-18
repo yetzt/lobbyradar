@@ -1708,6 +1708,17 @@ p.first-p {
 	bottom: 0px;
 }
 
+#imprint {
+	display: block;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	padding: 5px;
+	font-size: .6em;
+	color: #fff;
+	z-index: 500;
+}
+
 #networkviz-wrapper {
 	position: fixed;
 	right: 0px;
