@@ -1711,13 +1711,17 @@ p.first-p {
 #imprint {
 	display: block;
 	position: fixed;
-	left: 0;
+	left: 30px;
 	bottom: 0;
 	padding: 5px;
 	font-size: .6em;
 	color: #fff;
 	z-index: 500;
 }
+
+	#imprint a {
+		color: #fff;
+	}
 
 #networkviz-wrapper {
 	position: fixed;
