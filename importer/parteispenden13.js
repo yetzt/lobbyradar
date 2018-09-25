@@ -5,7 +5,7 @@ var moment = require("moment");
 var debug = require("debug")("importer:parteispenden13");
 var async = require("async");
 var path = require("path");
-var slug = require("slug");
+var slug = require("mollusc");
 var fs = require("fs");
 
 // load config

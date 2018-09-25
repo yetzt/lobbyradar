@@ -1,7 +1,7 @@
 var utils = require("../lib/utils.js");
 var path = require("path");
 var fs = require("fs");
-var slug = require("slug");
+var slug = require("mollusc");
 var mongojs = require("mongojs");
 var config = require(path.resolve(__dirname, "../config.js"));
 var db = mongojs(config.db, ["entities", "relations", "users", "update", "fields", "dataindex"]);
