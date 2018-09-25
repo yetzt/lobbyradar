@@ -1,13 +1,14 @@
 {
+  "private": true,
   "name": "lobbyradar",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "lobbyradar api",
   "main": "lobbyradar.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/lobbyradar/lobbyradar.git"
   },
-  "author": "Datenfreunde UG <info@datenfreunde.com> (http://datenfreunde.de/)",
+  "author": "yetzt <node@yetzt.me>",
   "license": "MIT",
   "dependencies": {
     "JSONStream": "^0.10.0",
@@ -27,13 +28,13 @@
     "mongojs": "^0.18.0",
     "mustache": "^2.1.2",
     "mustache-express": "^1.2.0",
-    "nsa": "0.0.5",
+    "nsa": "^0.2.1",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
     "request": "^2.51.0",
     "serve-favicon": "^2.3.0",
     "sv": "^0.3.6",
-    "trie-search": "^0.1.0",
+    "trie-search": "^1.2.8",
     "underscore": "^1.8.2",
     "unq": "0.0.2",
     "validator": "^3.22.2",
